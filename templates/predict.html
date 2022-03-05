@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>PREDICTION</title>
+</head>
+<body>
+	<h4 style = "text-align: right"><div style = "position:  absolute; right: 15px"><div style = "display: flex; gap:2rem;"><a href = "url">Home</a><a href = "url">About</a><a href = "url">Analyitcs</a></div></div></h4>
+    <h1 style = "text-align: center"><span>INDIAN PREMIER LEAGUE</span></h1>
+    <div style = "display: flex; gap:2rem; justify-content: space-between;"><h5>Batting Team: </h5><h5>Bowling Team: </h5><h5>Toss: </h5></div>
+    <div style = "display: flex; gap:2rem; justify-content: space-between;"><h5>Venue: </h5></div>
+    <div style = "display: flex; gap:2rem; justify-content: space-between;"><h5>Overs: </h5><h5>Score: </h5><h5>Wickets: </h5></div>
+    <div style = "display: flex; gap:2rem; justify-content: space-between;"><h5>Last 5 Overs: Score: </h5><h5>Wickets: </h5></div>
+	<div><h2 style = "text-align: center"><span>{{ prediction_text }}</span></h2></div>
+	<div style = "text-align: center"><button id="checkanother" type="submit"><a href="https://ipl-sp.herokuapp.com/">Back to home</a></button></div> 
+</body>
+<style>
+
+                @import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
+
+        body {
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-attachment: fixed;
+                text-align: left;
+            padding-left: 50px;
+            padding-right: 50px;
+            padding-top: -50px;
+            padding-bottom: 50px;
+            font-size: 15px;
+            font-family: "Noto Sans";
+            color: black;
+        }
+        a {
+                text-decoration: None;
+        }
+        #checkanother {
+            font-size: 15px;
+            color: black;
+            padding: 15px;
+        }
+     </style>
+</html>
