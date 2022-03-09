@@ -4,6 +4,7 @@ import jsonify
 import requests
 import numpy as np
 import pandas as pd
+from bs4 import BeautifulSoup
 from datetime import date, datetime
 from sklearn.preprocessing import StandardScaler
 from flask import Flask, render_template, request
@@ -12,30 +13,40 @@ app = Flask(__name__, template_folder = 'templates')
 model = pickle.load(open(r'ipl_score_prediction.pkl', 'rb'))
 
 df = pd.read_excel('Fixtures.xlsx')
-year = date.today().year
-month = date.today().month
-day = date.today().day
-if month < 10:
-    month = '0' + str(month)
-if day < 10:
-    day = '0' + str(day)
-today = str(year) + '-' + str(month) + '-' + str(day)
+# year = date.today().year
+# month = date.today().month
+# day = date.today().day
+# if month < 10:
+#     month = '0' + str(month)
+# if day < 10:
+#     day = '0' + str(day)
+# today = str(year) + '-' + str(month) + '-' + str(day)
+today = '2022-04-02'
 text = df[df['DATE'] == today]['MATCH'].values
 texts = []
 for i in range(len(text)):
-    texts.append(str(i + 1) + '. ' + str(text[i]))
+    texts.append(str(text[i]))
 
 @app.route('/', methods = ['GET'])
+
 def home():
+
     return render_template('home.html', len = len(texts), texts = texts)
 
 standard_to = StandardScaler()
+
+@app.route('/analytics', methods = ['GET'])
+
+def analytics():
+
+    return render_template('analytics.html')
 
 @app.route('/predict', methods = ['POST'])
 
 def predict():
 
-    url = 'https://www.espncricinfo.com/series/icc-men-s-t20-world-cup-qualifier-a-2021-22-1299556/ireland-vs-united-arab-emirates-final-1299585/live-cricket-score'
+    match = request.form['aa']
+    url = df[df['MATCH'] == match]['URL'].values[0]
     url = url.split('/')
     url = '/'.join(url[: -1]) + '/'
 
@@ -249,4 +260,4 @@ def predict():
     
 if __name__== '__main__':
     #app.run(host = '0.0.0.0', port = 8080)
-    app.run(debug = True)
+    app.run()
