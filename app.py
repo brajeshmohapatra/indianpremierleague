@@ -4,15 +4,21 @@ import jsonify
 import requests
 import numpy as np
 import pandas as pd
+from sqlalchemy import *
 from bs4 import BeautifulSoup
 from datetime import date, datetime
 from sklearn.preprocessing import StandardScaler
 from flask import Flask, render_template, request
+from sqlalchemy.ext.declarative import declarative_base
 
 app = Flask(__name__, template_folder = 'templates')
 model = pickle.load(open(r'ipl_score_prediction.pkl', 'rb'))
 
-df = pd.read_excel('Fixtures.xlsx')
+mysql = 'mysql+mysqlconnector://{user}:{password}@{server}/{database}'.format(user = 'root', password = 'Titun@1994', server = 'localhost', database = 'indianpremierleague')
+engine = create_engine(mysql, echo = True)
+base = declarative_base()
+df = pd.read_sql_table('fixtures', engine)
+
 # year = date.today().year
 # month = date.today().month
 # day = date.today().day
