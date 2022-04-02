@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ANALYTICS</title>
+</head>
+<body>
+    <h4 style = "text-align: right">
+        <div style = "position:  absolute; right: 15px">
+            <div style = "display: flex; gap:2rem;">
+                <a href = "/">
+                    Home
+                </a><a href = "">
+                    About
+                </a><a href = "/analytics">
+                    Analytics
+                </a>
+            </div>
+        </div>
+    </h4>
+<h1 style = "text-align: center">
+    <span>
+        INDIAN PREMIER LEAGUE
+    </span>
+</h1><br>
+<b>
+    <div>
+        <form action = "{{url_for('analytics')}}" method = "post">
+            <label>
+                <span>
+                    Year 
+                </span>
+            </label>
+            <input id = "aa" type = "float" name = "year">
+            <input type = "radio" id = "ab" name = "operator_year" value = "in">
+                <label for = "ab">In</label>
+            <input type = "radio" id = "ac" name = "operator_year" value = "<">
+                <label for = "ac">Before</label>
+            <input type = "radio" id = "ad" name = "operator_year" value = ">">
+                <label for = "ad">After</label><br><br>
+            <label>
+                <span>
+                    Venue 
+                </span>
+            </label>
+            <select name = "venue" id = "ae">
+                <option value = ""></option>
+                <option value = "Arun Jaitley Stadium">Arun Jaitley Stadium</option>
+                <option value = "Barabati Stadium">Barabati Stadium</option>
+                <option value = "Brabourne Stadium">Brabourne Stadium</option>
+                <option value = "Buffalo Park">Buffalo Park</option>
+                <option value = "De Beers Diamond Oval">De Beers Diamond Oval</option>
+                <option value = "Dr DY Patil Sports Academy">Dr DY Patil Sports Academy</option>
+                <option value = "Dr. Y.S. Rajasekhara Reddy ACA-VDCA Cricket Stadium">Dr. Y.S. Rajasekhara Reddy ACA-VDCA Cricket Stadium</option>
+                <option value = "Dubai International Cricket Stadium">Dubai International Cricket Stadium</option>
+                <option value = "Eden Gardens">Eden Gardens</option>
+                <option value = "Green Park">Green Park</option>
+                <option value = "Himachal Pradesh Cricket Association Stadium">Himachal Pradesh Cricket Association Stadium</option>
+                <option value = "Holkar Cricket Stadium">Holkar Cricket Stadium</option>
+                <option value = "JSCA International Stadium Complex">JSCA International Stadium Complex</option>
+                <option value = "Kingsmead">Kingsmead</option>
+                <option value = "M Chinnaswamy Stadium">M Chinnaswamy Stadium</option>
+                <option value = "MA Chidambaram Stadium">MA Chidambaram Stadium</option>
+                <option value = "Maharashtra Cricket Association Stadium">Maharashtra Cricket Association Stadium</option>
+                <option value = "Narendra Modi Stadium, Ahmedabad">Narendra Modi Stadium, Ahmedabad</option>
+                <option value = "Nehru Stadium">Nehru Stadium</option>
+                <option value = "New Wanderers Stadium">New Wanderers Stadium</option>
+                <option value = "Newlands">Newlands</option>
+                <option value = "OUTsurance Oval">OUTsurance Oval</option>
+                <option value = "Punjab Cricket Association IS Bindra Stadium">Punjab Cricket Association IS Bindra Stadium</option>
+                <option value = "Rajiv Gandhi International Stadium">Rajiv Gandhi International Stadium</option>
+                <option value = "Saurashtra Cricket Association Stadium">Saurashtra Cricket Association Stadium</option>
+                <option value = "Sawai Mansingh Stadium">Sawai Mansingh Stadium</option>
+                <option value = "Shaheed Veer Narayan Singh International Stadium">Shaheed Veer Narayan Singh International Stadium</option>
+                <option value = "Sharjah Cricket Stadium">Sharjah Cricket Stadium</option>
+                <option value = "Sheikh Zayed Stadium">Sheikh Zayed Stadium</option>
+                <option value = "St George's Park">St George's Park</option>
+                <option value = "Subrata Roy Sahara Stadium">Subrata Roy Sahara Stadium</option>
+                <option value = "SuperSport Park">SuperSport Park</option>
+                <option value = "Vidarbha Cricket Association Stadium, Jamtha">Vidarbha Cricket Association Stadium, Jamtha</option>
+                <option value = "Wankhede Stadium">Wankhede Stadium</option>
+            </select><br><br>
+            <label>
+                <span>
+                    First Batting Team 
+                </span>
+            </label>
+            <select name = "innings_1_bat_team" id = "af">
+                <option value = ""></option>
+                <option value = "Chennai Super Kings">Chennai Super Kings</option>
+                <option value = "Deccan Chargers">Deccan Chargers</option>
+                <option value = "Delhi Capitals">Delhi Capitals</option>
+                <option value = "Gujarat Lions">Gujarat Lions</option>
+                <option value = "Kochi Tuskers Kerala">Kochi Tuskers Kerala</option>
+                <option value = "Kolkata Knight Riders">Kolkata Knight Riders</option>
+                <option value = "Mumbai Indians">Mumbai Indians</option>
+                <option value = "Pune Warriors">Pune Warriors</option>
+                <option value = "Punjab Kings">Punjab Kings</option>
+                <option value = "Rajasthan Royals">Rajasthan Royals</option>
+                <option value = "Rising Pune Supergiant">Rising Pune Supergiant</option>
+                <option value = "Royal Challengers Bangalore">Royal Challengers Bangalore</option>
+                <option value = "Sunrisers Hyderabad">Sunrisers Hyderabad</option>
+            </select><br><br>
+            <label>
+                <span>
+                    Second Batting Team 
+                </span>
+            </label>
+            <select name = "innings_2_bat_team" id = "ag">
+                <option value = ""></option>
+                <option value = "Chennai Super Kings">Chennai Super Kings</option>
+                <option value = "Deccan Chargers">Deccan Chargers</option>
+                <option value = "Delhi Capitals">Delhi Capitals</option>
+                <option value = "Gujarat Lions">Gujarat Lions</option>
+                <option value = "Kochi Tuskers Kerala">Kochi Tuskers Kerala</option>
+                <option value = "Kolkata Knight Riders">Kolkata Knight Riders</option>
+                <option value = "Mumbai Indians">Mumbai Indians</option>
+                <option value = "Pune Warriors">Pune Warriors</option>
+                <option value = "Punjab Kings">Punjab Kings</option>
+                <option value = "Rajasthan Royals">Rajasthan Royals</option>
+                <option value = "Rising Pune Supergiant">Rising Pune Supergiant</option>
+                <option value = "Royal Challengers Bangalore">Royal Challengers Bangalore</option>
+                <option value = "Sunrisers Hyderabad">Sunrisers Hyderabad</option>
+            </select><br><br>
+            <label>
+                <span>
+                    Toss Winner 
+                </span>
+            </label>
+            <select name = "toss_winner" id = "ah">
+                <option value = ""></option>
+                <option value = "Chennai Super Kings">Chennai Super Kings</option>
+                <option value = "Deccan Chargers">Deccan Chargers</option>
+                <option value = "Delhi Capitals">Delhi Capitals</option>
+                <option value = "Gujarat Lions">Gujarat Lions</option>
+                <option value = "Kochi Tuskers Kerala">Kochi Tuskers Kerala</option>
+                <option value = "Kolkata Knight Riders">Kolkata Knight Riders</option>
+                <option value = "Mumbai Indians">Mumbai Indians</option>
+                <option value = "Pune Warriors">Pune Warriors</option>
+                <option value = "Punjab Kings">Punjab Kings</option>
+                <option value = "Rajasthan Royals">Rajasthan Royals</option>
+                <option value = "Rising Pune Supergiant">Rising Pune Supergiant</option>
+                <option value = "Royal Challengers Bangalore">Royal Challengers Bangalore</option>
+                <option value = "Sunrisers Hyderabad">Sunrisers Hyderabad</option>
+            </select>
+            <input type = "radio" id = "ai" name = "toss_decision" value = "bat">
+                <label for = "ai">Bat</label>
+            <input type = "radio" id = "aj" name = "toss_decision" value = "field">
+                <label for = "aj">Field</label><br><br>
+            <label>
+                <span>
+                    Winner 
+                </span>
+            </label>
+            <select name = "winner" id = "ak">
+                <option value = ""></option>
+                <option value = "Chennai Super Kings">Chennai Super Kings</option>
+                <option value = "Deccan Chargers">Deccan Chargers</option>
+                <option value = "Delhi Capitals">Delhi Capitals</option>
+                <option value = "Gujarat Lions">Gujarat Lions</option>
+                <option value = "Kochi Tuskers Kerala">Kochi Tuskers Kerala</option>
+                <option value = "Kolkata Knight Riders">Kolkata Knight Riders</option>
+                <option value = "Mumbai Indians">Mumbai Indians</option>
+                <option value = "Pune Warriors">Pune Warriors</option>
+                <option value = "Punjab Kings">Punjab Kings</option>
+                <option value = "Rajasthan Royals">Rajasthan Royals</option>
+                <option value = "Rising Pune Supergiant">Rising Pune Supergiant</option>
+                <option value = "Royal Challengers Bangalore">Royal Challengers Bangalore</option>
+                <option value = "Sunrisers Hyderabad">Sunrisers Hyderabad</option>
+            </select>
+            <input type = "radio" id = "al" name = "result" value = "runs">
+                <label for = "al">Runs</label>
+            <input type = "radio" id = "am" name = "result" value = "wickets">
+                <label for = "am">Wickets</label><br><br>
+            <label>
+                <span>
+                    Margin 
+                </span>
+            </label><input id = "an" type = "float" name = "result_margin">
+            <input type = "radio" id = "ao" name = "operator_result_margin" value = " = ">
+                <label for = "ao">Equals to</label>
+            <input type = "radio" id = "ap" name = "operator_result_margin" value = "<">
+                <label for = "ap">Less than</label>
+            <input type = "radio" id = "aq" name = "operator_result_margin" value = ">">
+                <label for = "aq">More than</label><br><br>
+            <label>
+                <span>
+                    D/L Method 
+                </span>
+            </label>
+            <select name = "method" id = "ar">
+                <option value = ""></option>
+                <option value = "D/L">Yes</option>
+            </select><br><br>
+            <label>
+                <span>
+                    1st Innings Score 
+                </span>
+            </label>
+            <input id = "as" type = "float" name = "innings_1_score">
+            <input type = "radio" id = "at" name = "operator_innings_1_score" value = " = ">
+                <label for = "at">Equals to</label>
+            <input type = "radio" id = "au" name = "operator_innings_1_score" value = "<">
+                <label for = "au">Less than</label>
+            <input type = "radio" id = "av" name = "operator_innings_1_score" value = ">">
+                <label for = "av">More than</label><br><br>
+            <label>
+                <span>
+                    1st Innings Wickets 
+                </span>
+            </label>
+            <input id = "aw" type = "float" name = "innings_1_wickets">
+            <input type = "radio" id = "ax" name = "operator_innings_1_wickets" value = " = ">
+                <label for = "ax">Equals to</label>
+            <input type = "radio" id = "ay" name = "operator_innings_1_wickets" value = "<">
+                <label for = "ay">Less than</label>
+            <input type = "radio" id = "az" name = "operator_innings_1_wickets" value = ">">
+                <label for = "az">More than</label><br><br>
+            <label>
+                <span>
+                    2nd Innings Score 
+                </span>
+            </label>
+            <input id = "ba" type = "float" name = "innings_2_score">
+            <input type = "radio" id = "bb" name = "operator_innings_2_score" value = " = ">
+                <label for = "bb">Equals to</label>
+            <input type = "radio" id = "bc" name = "operator_innings_2_score" value = "<">
+                <label for = "bc">Less than</label>
+            <input type = "radio" id = "bd" name = "operator_innings_2_score" value = ">">
+                <label for = "bd">More than</label><br><br>
+            <label>
+                <span>
+                    2nd Innings Wickets 
+                </span>
+            </label>
+            <input id = "be" type = "float" name = "innings_2_wickets">
+            <input type = "radio" id = "bf" name = "operator_innings_2_wickets" value = " = ">
+                <label for = "bf">Equals to</label>
+            <input type = "radio" id = "bg" name = "operator_innings_2_wickets" value = "<">
+                <label for = "bg">Less than</label>
+            <input type = "radio" id = "bh" name = "operator_innings_2_wickets" value = ">">
+                <label for = "bh">More than</label><br><br>
+            <div style = "text-align: center">
+                <b>
+                    <button id = "submit" type = "submit">
+                        Submit Query
+                    </button>
+                </b>
+            </div>
+        </form>
+    </div>
+</b>
+</body>
+<style>
+    @import url("https://fonts.googleapis.com/css2?family = Noto+Sans&display = swap");
+    body {
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-attachment: fixed;
+            text-align: left;
+            padding-left: 50px;
+            padding-right: 50px;
+            padding-top: -50px;
+            padding-bottom: 50px;
+            font-size: 18px;
+            font-family: "Noto Sans";
+            color: black;
+        }
+
+    a {
+            text-decoration: None;
+        }
+
+    label {
+            width: 180px;
+            display: inline-block;
+        }
+    #submit {
+                font-size: 18px;
+                color: black;
+                padding: 15px;
+        }
+</style>
+</html>

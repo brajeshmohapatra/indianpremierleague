@@ -1,2 +1,2 @@
-# indianpremierleague
-Indian Premier League score prediction and analysis.
+# ipl_score_prediction
+Predict IPL Score

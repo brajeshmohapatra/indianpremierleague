@@ -1,49 +1,182 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>HOME</title>
+	<title>CricHub</title>
+    
+
+    <link rel = "stylesheet" href = "https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity = "sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin = "anonymous">
+    <script src = "https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity = "sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin = "anonymous"></script>
+    <script src = "https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity = "sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin = "anonymous"></script>
+    <script src = "https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity = "sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin = "anonymous"></script>
+
+
+  <script>
+          document.addEventListener("DOMContentLoaded", function(){
+          window.addEventListener('scroll', function() {
+          if (window.scrollY > 50) {
+                document.getElementById('navbar_top').classList.add('fixed-top');
+                navbar_height = document.querySelector('.navbar').offsetHeight;
+                document.body.style.paddingTop = navbar_height + 'px';
+          } 
+          else {
+                document.getElementById('navbar_top').classList.remove('fixed-top');
+                document.body.style.paddingTop = '0';
+          } 
+            });
+          }); 
+
+
+  </script>
+
+
+  <style>
+        .navbar .navbar-nav .nav-link {
+          color: #fff;
+          font-size: 1.1em;
+        }
+        .navbar .navbar-nav .nav-link:hover {
+          background-color: #0864db;
+          color: #fff;
+        }
+        .navbar .navbar-nav .nav-link {
+           padding: 0.6em;
+        }
+      .navbar .navbar-brand {
+          padding: 0 0.6em;
+      }
+      @media only screen and (min-width: 992px) {
+      .navbar {
+          padding: 0;
+      }
+      .navbar .navbar-nav .nav-link {
+        padding: 1em 0.7em;
+      }
+      .navbar .navbar-brand {
+        padding: 0 0.8em;
+      }
+    }
+
+    .carousel {
+      max-height: 500px;
+      overflow: hidden;
+    }
+
+    .carousel .item img {
+      width: 100%;
+      height: auto;
+    }
+
+
+  </style>
+
+
+
 </head>
-<body>
-        <h4 style = "text-align: right"><div style = "position:  absolute; right: 15px"><div style = "display: flex; gap:2rem;"><a href = "/">Home</a><a href = "">About</a><a href = "/analytics">Analytics</a></div></div></h4>
-	    <h1 style = "text-align: center"><span>INDIAN PREMIER LEAGUE</span></h1>
-        <div>The <b>Indian Premier League</b> (IPL) is a professional men's Twenty20 cricket league, contested by ten teams based out of ten Indian cities. The league was founded by the Board of Control for Cricket in India (BCCI) in 2007. It is usually held between March and May of every year and has an exclusive window in the ICC Future Tours Programme. The IPL is the most-attended cricket league in the world and in 2014 was ranked sixth by average attendance among all sports leagues. The 2020 IPL season set a massive viewership record with 31.57 million average impressions and with an overall consumption increase of 23 per cent from the 2019 season. There have been fourteen seasons of the IPL tournament. The current IPL title holders are the Chennai Super Kings, winning the 2021 season.</div><br>
 
-        <h3>Few stats (upto IPL 2020):</h3>
-        <div>1. Most Successful Team: Mumbai Indians (5 titles)</div>
-        <div>2. Current Champion: Chennai Super Kings (4th title)</div>
-        <div>3. Most Runs: Virat Kohli (6283)</div>
-        <div>4. Most Wickets: Lasith Malinga (170)</div><br>
+<body>  
+      <div class = "jumbotron text-center" style = "background-image: url(static/background.jpg); background-size: 100% 100%;">
+           <h1 style = "text-align: center; color: whitesmoke; font-family: 'Georgia';"><span>INDIAN PREMIER LEAGUE</span></h1>
+      </div>
 
-        <h2>Today's Match</h2>
-        <b><div><form action = "{{url_for('predict')}}" method = "post">
-            <select name = "aa" id = "aa" required = "required">
-            <option>Select</option>
-            {%for text in texts%}
-                <option value = "{{text}}">{{text}}</option>
-            {%endfor%}</select>
-        <button id = "submit" type = "submit">Predict</button></b>
+      <nav id = "navbar_top" class = "navbar navbar-expand-sm bg-dark navbar-dark">
+      
+        <!-- Toggler/collapsibe Button -->
+        <button class = "navbar-toggler" type = "button" data-toggle = "collapse" data-target = "#collapsibleNavbar">
+          <span class = "navbar-toggler-icon"></span>
+        </button>
+      
+        <!-- Navbar links -->
+        <div class = "collapse navbar-collapse" id = "collapsibleNavbar">
+          <ul class = "nav navbar-nav navbar-right">
+            <li class = "nav-item">
+              <a class = "nav-link" href = "/">Home</a>
+            </li>
+            <li class = "nav-item">
+              <a class = "nav-link disabled" href = "/about">About</a>
+            </li>
+            <li class = "nav-item">
+              <a class = "nav-link disabled" href = "/analytics">Analytics</a>
+            </li>
+          </ul>
+          
+        </div>
+      </nav>
+
+      <br>
+      <div class = "container-fluid text-center"> 
+        <div class = "row content">
+            <div class = "col-sm-2 sidenav">
+        </div>
+        <div class = "col-sm-8 text-left">
+        <p>The <b>Indian Premier League</b> (IPL) is a professional men's Twenty20 cricket league, 
+            contested by ten teams based out of ten Indian cities. The league was founded by the Board of 
+            Control for Cricket in India (BCCI) in 2007. It is usually held between March and May of every
+             year and has an exclusive window in the ICC Future Tours Programme. The IPL is the most-attended 
+             cricket league in the world and in 2014 was ranked sixth by average attendance among all sports leagues. 
+             The 2020 IPL season set a massive viewership record with 31.57 million average impressions and with an 
+             overall consumption increase of 23 per cent from the 2019 season. There have been fourteen seasons of 
+             the IPL tournament. The current IPL title holders are the Chennai Super Kings, winning the 2021 season.
+            </p><br>
+
+        
+
+        <div class = "panel panel-default">
+            <div class = "panel-heading"><h3>Few stats (upto IPL 2020):</h3></div>
+            <div class = "panel-body">
+                <ul class = "list-group">
+                    <li class = "list-group-item">1. Most Successful Team: {{most_champion_team}} ({{most_champion_team_times}} titles)</li>
+                    <li class = "list-group-item">2. Current Champion: {{current_champion_team}} ({{current_champions_team_times}}th title)</li>
+                    <li class = "list-group-item">3. Most Runs: {{highest_runs_batsman}} ({{highest_runs_runs}})</li>
+                    <li class = "list-group-item">4. Most Wickets: {{highest_wickets_bowler}} ({{highest_wickets_wickets}})</li>
+                </ul>                  
+            </div>
+        </div><br><br>
+
+        <div class = "panel panel-primary">
+            <div class = "panel-heading">
+                <h2>Today's Match</h2>
+            </div>
+            <div class = "panel-body">
+              <div class = "form-group">
+                  <div>
+                    <form action = "{{url_for('predict')}}" method = "post">
+                      <select class = "form-control" name = "aa" id = "aa" required = "required">
+                        <option>Select</option>
+                        {%for text in texts%}
+                        <option value = "{{text}}">{{text}}</option>
+                        {%endfor%}
+                      </select>
+                      <br>
+                      <button id = "submit" type = "submit" class = "btn btn-primary">Predict</button>
+                    </form>
+                  </div>
+              </div>
     <style>
 
-        @import url("https://fonts.googleapis.com/css2?family = Noto+Sans&display = swap");
+                @import url('https://fonts.googleapis.com/css2?family = Noto+Sans&display = swap');
 
         body {
             background-repeat: no-repeat;
             background-size: cover;
             background-attachment: fixed;
-            text-align: left;
+                text-align: left;
             padding-left: 50px;
             padding-right: 50px;
             padding-top: -50px;
             padding-bottom: 50px;
-            font-size: 18px;
+            font-size: 15px;
             font-family: "Noto Sans";
             color: black;
         }
-
         a {
-            text-decoration: None;
+                text-decoration: None;
         }
 
     </style>
+    </div>
+    </div>
+    </div>
+    <div class = "col-sm-2 sidenav"></div>
+    </div>
 </body>
 </html>

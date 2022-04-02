@@ -1,0 +1,104 @@
+1. Reduce the df size by selecting only these columns:
+
+'venue', 'toss_decision', 'batting_team', 'bowling_team', 'overs', 'ball_no', 'runs', 'wickets', 'runs_last_5_overs', 'wickets_last_5_overs', 'playoff', 'knockout', 'final', 'final_score'
+
+
+2. Dummitize these columns:
+
+'venue', 'toss_decision', 'batting_team', 'bowling_team'
+
+
+3. Resulting df will have these columns:
+
+'overs', 'ball_no', 'runs', 'wickets', 'runs_last_5_overs',
+       'wickets_last_5_overs', 'playoff', 'knockout', 'final', 'final_score',
+       'venue_Arun Jaitley Stadium, Delhi', 'venue_Barabati Stadium',
+       'venue_Brabourne Stadium', 'venue_Brabourne Stadium, Mumbai',
+       'venue_Buffalo Park', 'venue_De Beers Diamond Oval',
+       'venue_Dr DY Patil Sports Academy',
+       'venue_Dr. Y.S. Rajasekhara Reddy ACA-VDCA Cricket Stadium',
+       'venue_Dubai International Cricket Stadium', 'venue_Eden Gardens',
+       'venue_Green Park',
+       'venue_Himachal Pradesh Cricket Association Stadium',
+       'venue_Holkar Cricket Stadium',
+       'venue_JSCA International Stadium Complex', 'venue_Kingsmead',
+       'venue_M Chinnaswamy Stadium', 'venue_MA Chidambaram Stadium',
+       'venue_MA Chidambaram Stadium, Chepauk',
+       'venue_Narendra Modi Stadium, Ahmedabad', 'venue_Nehru Stadium',
+       'venue_New Wanderers Stadium', 'venue_Newlands',
+       'venue_OUTsurance Oval',
+       'venue_Punjab Cricket Association IS Bindra Stadium',
+       'venue_Punjab Cricket Association Stadium, Mohali',
+       'venue_Rajiv Gandhi International Stadium',
+       'venue_Rajiv Gandhi International Stadium, Uppal',
+       'venue_Saurashtra Cricket Association Stadium',
+       'venue_Sawai Mansingh Stadium',
+       'venue_Shaheed Veer Narayan Singh International Stadium',
+       'venue_Sharjah Cricket Stadium', 'venue_Sheikh Zayed Stadium',
+       'venue_St George's Park', 'venue_Subrata Roy Sahara Stadium',
+       'venue_SuperSport Park',
+       'venue_Vidarbha Cricket Association Stadium, Jamtha',
+       'venue_Wankhede Stadium', 'venue_Zayed Cricket Stadium, Abu Dhabi',
+       'toss_decision_bat', 'toss_decision_field',
+       'batting_team_Chennai Super Kings', 'batting_team_Deccan Chargers',
+       'batting_team_Delhi Capitals', 'batting_team_Gujarat Lions',
+       'batting_team_Kochi Tuskers Kerala',
+       'batting_team_Kolkata Knight Riders', 'batting_team_Mumbai Indians',
+       'batting_team_Pune Warriors', 'batting_team_Punjab Kings',
+       'batting_team_Rajasthan Royals', 'batting_team_Rising Pune Supergiant',
+       'batting_team_Royal Challengers Bangalore',
+       'batting_team_Sunrisers Hyderabad', 'bowling_team_Chennai Super Kings',
+       'bowling_team_Deccan Chargers', 'bowling_team_Delhi Capitals',
+       'bowling_team_Gujarat Lions', 'bowling_team_Kochi Tuskers Kerala',
+       'bowling_team_Kolkata Knight Riders', 'bowling_team_Mumbai Indians',
+       'bowling_team_Pune Warriors', 'bowling_team_Punjab Kings',
+       'bowling_team_Rajasthan Royals', 'bowling_team_Rising Pune Supergiant',
+       'bowling_team_Royal Challengers Bangalore',
+       'bowling_team_Sunrisers Hyderabad'
+
+
+4. Use the following code to replace " " by "_".
+
+import re
+columns = []
+for i in df.columns:
+    i = re.sub('\s', '_', i)
+    i = re.sub('\.', '', i)
+    i = re.sub('\,', '', i)
+    i = re.sub('\-', '_', i)
+    columns.append(i)
+df.columns = columns
+
+
+5. Rearrange the columns as below:
+
+df = df[['batting_team_Chennai_Super_Kings', 'batting_team_Deccan_Chargers', 'batting_team_Delhi_Capitals', 
+         'batting_team_Gujarat_Lions', 'batting_team_Kochi_Tuskers_Kerala', 'batting_team_Kolkata_Knight_Riders', 
+         'batting_team_Mumbai_Indians', 'batting_team_Pune_Warriors', 'batting_team_Punjab_Kings', 'batting_team_Rajasthan_Royals', 
+         'batting_team_Rising_Pune_Supergiant', 'batting_team_Royal_Challengers_Bangalore', 'batting_team_Sunrisers_Hyderabad', 
+         'bowling_team_Chennai_Super_Kings', 'bowling_team_Deccan_Chargers', 'bowling_team_Delhi_Capitals', 'bowling_team_Gujarat_Lions', 
+         'bowling_team_Kochi_Tuskers_Kerala', 'bowling_team_Kolkata_Knight_Riders', 'bowling_team_Mumbai_Indians', 
+         'bowling_team_Pune_Warriors', 'bowling_team_Punjab_Kings', 'bowling_team_Rajasthan_Royals', 'bowling_team_Rising_Pune_Supergiant', 
+         'bowling_team_Royal_Challengers_Bangalore', 'bowling_team_Sunrisers_Hyderabad', 'toss_decision_bat', 'toss_decision_field', 
+         'venue_Arun_Jaitley_Stadium_Delhi', 'venue_Barabati_Stadium', 'venue_Brabourne_Stadium', 'venue_Brabourne_Stadium_Mumbai', 
+         'venue_Buffalo_Park', 'venue_De_Beers_Diamond_Oval', 'venue_Dr_DY_Patil_Sports_Academy', 
+         'venue_Dr_YS_Rajasekhara_Reddy_ACA_VDCA_Cricket_Stadium', 'venue_Dubai_International_Cricket_Stadium', 'venue_Eden_Gardens', 
+         'venue_Green_Park', 'venue_Himachal_Pradesh_Cricket_Association_Stadium', 'venue_Holkar_Cricket_Stadium', 
+         'venue_JSCA_International_Stadium_Complex', 'venue_Kingsmead', 'venue_M_Chinnaswamy_Stadium', 'venue_MA_Chidambaram_Stadium', 
+         'venue_MA_Chidambaram_Stadium_Chepauk', 'venue_Narendra_Modi_Stadium_Ahmedabad', 'venue_Nehru_Stadium', 'venue_New_Wanderers_Stadium', 
+         'venue_Newlands', 'venue_OUTsurance_Oval', 'venue_Punjab_Cricket_Association_IS_Bindra_Stadium', 
+         'venue_Punjab_Cricket_Association_Stadium_Mohali', 'venue_Rajiv_Gandhi_International_Stadium', 
+         'venue_Rajiv_Gandhi_International_Stadium_Uppal', 'venue_Saurashtra_Cricket_Association_Stadium', 'venue_Sawai_Mansingh_Stadium', 
+         'venue_Shaheed_Veer_Narayan_Singh_International_Stadium', 'venue_Sharjah_Cricket_Stadium', 'venue_Sheikh_Zayed_Stadium', 
+         'venue_St_George\'s_Park', 'venue_Subrata_Roy_Sahara_Stadium', 'venue_SuperSport_Park', 
+         'venue_Vidarbha_Cricket_Association_Stadium_Jamtha', 'venue_Wankhede_Stadium', 'venue_Zayed_Cricket_Stadium_Abu_Dhabi', 'overs', 
+         'ball_no', 'runs', 'wickets', 'runs_last_5_overs', 'wickets_last_5_overs', 'playoff', 'knockout', 'final', 'final_score']]
+
+
+
+6. train-validation split:
+
+X_train = pd.DataFrame(train.drop(['final_score'], axis = 1), columns = train.drop(['final_score'], axis = 1).columns)
+X_test = pd.DataFrame(test.drop(['final_score'], axis = 1), columns = test.drop(['final_score'], axis = 1).columns)
+y_train = train['final_score']
+y_test = test['final_score']

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>PREDICTION</title>
+</head>
+<body>
+	<h4 style = "text-align: right"><div style = "position:  absolute; right: 15px"><div style = "display: flex; gap:2rem;"><a href = "/">Home</a><a href = "/about">About</a><a href = "/analytics">Analytics</a></div></div></h4>
+    <h1 style = "text-align: center"><span>INDIAN PREMIER LEAGUE</span></h1>
+    <div style = "display: flex; gap:2rem; justify-content: space-between;"><h5>Batting Team: {{ batting_team }}</h5><h5>Bowling Team: {{ bowling_team }}</h5><h5>Toss: {{ toss_winner }}</h5></div>
+    <div style = "display: flex; gap:2rem; justify-content: space-between;"><h5>Venue: {{ venue }}</h5></div>
+    <div style = "display: flex; gap:2rem; justify-content: space-between;"><h5>Overs: {{ overs }}</h5><h5>Score: {{ runs }}</h5><h5>Wickets: {{ wickets }}</h5></div>
+    <div style = "display: flex; gap:2rem; justify-content: space-between;"><h5>Last 5 Overs: Score: {{ runs_last_5_overs }}</h5><h5>Wickets: {{ wickets_last_5_overs }}</h5></div>
+	<div><h2 style = "text-align: center"><span>{{ prediction_text }}</span></h2></div>
+	<div style = "text-align: center"><button id = "checkanother" type = "submit"><a href = "/">Back to home</a></button></div> 
+</body>
+
+<style>
+
+                @import url('https://fonts.googleapis.com/css2?family = Noto+Sans&display = swap');
+
+        body {
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-attachment: fixed;
+            text-align: left;
+            padding-left: 50px;
+            padding-right: 50px;
+            padding-top: -50px;
+            padding-bottom: 50px;
+            font-size: 18px;
+            font-family: "Noto Sans";
+            color: black;
+        }
+        a {
+            text-decoration: None;
+        }
+        #checkanother {
+            font-size: 15px;
+            color: black;
+            padding: 15px;
+        }
+     </style>
+</html>
