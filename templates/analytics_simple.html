@@ -2,6 +2,12 @@
 <html>
 <head>
     <title>ANALYTICS</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/TableExport/5.2.0/js/tableexport.min.js" integrity="sha512-XmZS54be9JGMZjf+zk61JZaLZyjTRgs41JLSmx5QlIP5F+sSGIyzD2eJyxD4K6kGGr7AsVhaitzZ2WTfzpsQzg==" crossorigin="anonymous" referrerpolicy="no-referrer">
+TableExport(document.getElementsByTagName("table"), {
+    filename: 'excelfile',            
+    sheetname: "sheet1"                     
+});
+</script>
 </head>
 <body>
     <h4 style = "text-align: right">
@@ -31,18 +37,20 @@
                 </span>
             </label>
             <input id = "aa" type = "float" name = "year">
-            <input type = "radio" id = "ab" name = "operator_year" value = "in">
+            <input type = "radio" id = "ab" name = "operator_year" value = "=">
                 <label for = "ab">In</label>
             <input type = "radio" id = "ac" name = "operator_year" value = "<">
                 <label for = "ac">Before</label>
             <input type = "radio" id = "ad" name = "operator_year" value = ">">
-                <label for = "ad">After</label><br><br>
+                <label for = "ad">After</label>
+            <input style = "display: None; visibility: hidden; opacity: 0; clip-path: inset(100%);" type = "radio" id = "ae" name = "operator_year" value = "" checked>
+                <label for = "ae"></label><br><br>
             <label>
                 <span>
                     Venue 
                 </span>
             </label>
-            <select name = "venue" id = "ae">
+            <select name = "venue" id = "af">
                 <option value = ""></option>
                 <option value = "Arun Jaitley Stadium">Arun Jaitley Stadium</option>
                 <option value = "Barabati Stadium">Barabati Stadium</option>
@@ -84,7 +92,7 @@
                     First Batting Team 
                 </span>
             </label>
-            <select name = "innings_1_bat_team" id = "af">
+            <select name = "innings_1_bat_team" id = "ag">
                 <option value = ""></option>
                 <option value = "Chennai Super Kings">Chennai Super Kings</option>
                 <option value = "Deccan Chargers">Deccan Chargers</option>
@@ -105,7 +113,7 @@
                     Second Batting Team 
                 </span>
             </label>
-            <select name = "innings_2_bat_team" id = "ag">
+            <select name = "innings_2_bat_team" id = "ah">
                 <option value = ""></option>
                 <option value = "Chennai Super Kings">Chennai Super Kings</option>
                 <option value = "Deccan Chargers">Deccan Chargers</option>
@@ -126,7 +134,7 @@
                     Toss Winner 
                 </span>
             </label>
-            <select name = "toss_winner" id = "ah">
+            <select name = "toss_winner" id = "ai">
                 <option value = ""></option>
                 <option value = "Chennai Super Kings">Chennai Super Kings</option>
                 <option value = "Deccan Chargers">Deccan Chargers</option>
@@ -142,16 +150,18 @@
                 <option value = "Royal Challengers Bangalore">Royal Challengers Bangalore</option>
                 <option value = "Sunrisers Hyderabad">Sunrisers Hyderabad</option>
             </select>
-            <input type = "radio" id = "ai" name = "toss_decision" value = "bat">
-                <label for = "ai">Bat</label>
-            <input type = "radio" id = "aj" name = "toss_decision" value = "field">
-                <label for = "aj">Field</label><br><br>
+            <input type = "radio" id = "aj" name = "toss_decision" value = "bat">
+                <label for = "aj">Bat</label>
+            <input type = "radio" id = "ak" name = "toss_decision" value = "field">
+                <label for = "ak">Field</label>
+            <input style = "display: None; visibility: hidden; opacity: 0; clip-path: inset(100%);" type = "radio" id = "al" name = "toss_decision" value = "" checked>
+                <label for = "al"></label><br><br>
             <label>
                 <span>
                     Winner 
                 </span>
             </label>
-            <select name = "winner" id = "ak">
+            <select name = "winner" id = "am">
                 <option value = ""></option>
                 <option value = "Chennai Super Kings">Chennai Super Kings</option>
                 <option value = "Deccan Chargers">Deccan Chargers</option>
@@ -167,27 +177,31 @@
                 <option value = "Royal Challengers Bangalore">Royal Challengers Bangalore</option>
                 <option value = "Sunrisers Hyderabad">Sunrisers Hyderabad</option>
             </select>
-            <input type = "radio" id = "al" name = "result" value = "runs">
-                <label for = "al">Runs</label>
-            <input type = "radio" id = "am" name = "result" value = "wickets">
-                <label for = "am">Wickets</label><br><br>
+            <input type = "radio" id = "an" name = "result" value = "runs">
+                <label for = "an">Runs</label>
+            <input type = "radio" id = "ao" name = "result" value = "wickets">
+                <label for = "ao">Wickets</label>
+            <input style = "display: None; visibility: hidden; opacity: 0; clip-path: inset(100%);" type = "radio" id = "ap" name = "result" value = "" checked>
+                <label for = "ap"></label><br><br>
             <label>
                 <span>
                     Margin 
                 </span>
-            </label><input id = "an" type = "float" name = "result_margin">
-            <input type = "radio" id = "ao" name = "operator_result_margin" value = " = ">
-                <label for = "ao">Equals to</label>
-            <input type = "radio" id = "ap" name = "operator_result_margin" value = "<">
-                <label for = "ap">Less than</label>
-            <input type = "radio" id = "aq" name = "operator_result_margin" value = ">">
-                <label for = "aq">More than</label><br><br>
+            </label><input id = "aq" type = "float" name = "result_margin">
+            <input type = "radio" id = "ar" name = "operator_result_margin" value = " = ">
+                <label for = "ar">Equals to</label>
+            <input type = "radio" id = "as" name = "operator_result_margin" value = "<">
+                <label for = "as">Less than</label>
+            <input type = "radio" id = "at" name = "operator_result_margin" value = ">">
+                <label for = "at">More than</label>
+            <input style = "display: None; visibility: hidden; opacity: 0; clip-path: inset(100%);" type = "radio" id = "au" name = "operator_result_margin" value = "" checked>
+                <label for = "au"></label><br><br>
             <label>
                 <span>
                     D/L Method 
                 </span>
             </label>
-            <select name = "method" id = "ar">
+            <select name = "method" id = "av">
                 <option value = ""></option>
                 <option value = "D/L">Yes</option>
             </select><br><br>
@@ -196,49 +210,69 @@
                     1st Innings Score 
                 </span>
             </label>
-            <input id = "as" type = "float" name = "innings_1_score">
-            <input type = "radio" id = "at" name = "operator_innings_1_score" value = " = ">
-                <label for = "at">Equals to</label>
-            <input type = "radio" id = "au" name = "operator_innings_1_score" value = "<">
-                <label for = "au">Less than</label>
-            <input type = "radio" id = "av" name = "operator_innings_1_score" value = ">">
-                <label for = "av">More than</label><br><br>
+            <input id = "aw" type = "float" name = "innings_1_score">
+            <input type = "radio" id = "ax" name = "operator_innings_1_score" value = " = ">
+                <label for = "ax">Equals to</label>
+            <input type = "radio" id = "ay" name = "operator_innings_1_score" value = "<">
+                <label for = "ay">Less than</label>
+            <input type = "radio" id = "az" name = "operator_innings_1_score" value = ">">
+                <label for = "az">More than</label>
+            <input style = "display: None; visibility: hidden; opacity: 0; clip-path: inset(100%);" type = "radio" id = "ba" name = "operator_innings_1_score" value = "" checked>
+                <label for = "ba"></label><br><br>
             <label>
                 <span>
                     1st Innings Wickets 
                 </span>
             </label>
-            <input id = "aw" type = "float" name = "innings_1_wickets">
-            <input type = "radio" id = "ax" name = "operator_innings_1_wickets" value = " = ">
-                <label for = "ax">Equals to</label>
-            <input type = "radio" id = "ay" name = "operator_innings_1_wickets" value = "<">
-                <label for = "ay">Less than</label>
-            <input type = "radio" id = "az" name = "operator_innings_1_wickets" value = ">">
-                <label for = "az">More than</label><br><br>
+            <input id = "bb" type = "float" name = "innings_1_wickets">
+            <input type = "radio" id = "bc" name = "operator_innings_1_wickets" value = " = ">
+                <label for = "bc">Equals to</label>
+            <input type = "radio" id = "bd" name = "operator_innings_1_wickets" value = "<">
+                <label for = "bd">Less than</label>
+            <input type = "radio" id = "be" name = "operator_innings_1_wickets" value = ">">
+                <label for = "be">More than</label>
+            <input style = "display: None; visibility: hidden; opacity: 0; clip-path: inset(100%);" type = "radio" id = "bf" name = "operator_innings_1_wickets" value = "" checked>
+                <label for = "bf"></label><br><br>
             <label>
                 <span>
                     2nd Innings Score 
                 </span>
             </label>
-            <input id = "ba" type = "float" name = "innings_2_score">
-            <input type = "radio" id = "bb" name = "operator_innings_2_score" value = " = ">
-                <label for = "bb">Equals to</label>
-            <input type = "radio" id = "bc" name = "operator_innings_2_score" value = "<">
-                <label for = "bc">Less than</label>
-            <input type = "radio" id = "bd" name = "operator_innings_2_score" value = ">">
-                <label for = "bd">More than</label><br><br>
+            <input id = "bg" type = "float" name = "innings_2_score">
+            <input type = "radio" id = "bh" name = "operator_innings_2_score" value = " = ">
+                <label for = "bh">Equals to</label>
+            <input type = "radio" id = "bi" name = "operator_innings_2_score" value = "<">
+                <label for = "bi">Less than</label>
+            <input type = "radio" id = "bj" name = "operator_innings_2_score" value = ">">
+                <label for = "bj">More than</label>
+            <input style = "display: None; visibility: hidden; opacity: 0; clip-path: inset(100%);" type = "radio" id = "bk" name = "operator_innings_2_score" value = "" checked>
+                <label for = "bk"></label><br><br>
             <label>
                 <span>
                     2nd Innings Wickets 
                 </span>
             </label>
-            <input id = "be" type = "float" name = "innings_2_wickets">
-            <input type = "radio" id = "bf" name = "operator_innings_2_wickets" value = " = ">
-                <label for = "bf">Equals to</label>
-            <input type = "radio" id = "bg" name = "operator_innings_2_wickets" value = "<">
-                <label for = "bg">Less than</label>
-            <input type = "radio" id = "bh" name = "operator_innings_2_wickets" value = ">">
-                <label for = "bh">More than</label><br><br>
+            <input id = "bl" type = "float" name = "innings_2_wickets">
+            <input type = "radio" id = "bm" name = "operator_innings_2_wickets" value = " = ">
+                <label for = "bm">Equals to</label>
+            <input type = "radio" id = "bn" name = "operator_innings_2_wickets" value = "<">
+                <label for = "bn">Less than</label>
+            <input type = "radio" id = "bo" name = "operator_innings_2_wickets" value = ">">
+                <label for = "bo">More than</label>
+            <input style = "display: None; visibility: hidden; opacity: 0; clip-path: inset(100%);" type = "radio" id = "bp" name = "operator_innings_2_wickets" value = "" checked>
+                <label for = "bp"></label><br><br>
+            <input type = "radio" id = "bq" name = "playoff" value = "1">
+                <label for = "bq">Playoffs</label>
+            <input style = "display: None; visibility: hidden; opacity: 0; clip-path: inset(100%);" type = "radio" id = "br" name = "playoff" value = "" checked>
+                <label for = "br"></label>
+            <input type = "radio" id = "bs" name = "knockout" value = "1">
+                <label for = "bs">Knockout</label>
+            <input style = "display: None; visibility: hidden; opacity: 0; clip-path: inset(100%);" type = "radio" id = "bt" name = "knockout" value = "" checked>
+                <label for = "bt"></label>
+            <input type = "radio" id = "bu" name = "final" value = "1">
+                <label for = "bu">Final</label>
+            <input style = "display: None; visibility: hidden; opacity: 0; clip-path: inset(100%);" type = "radio" id = "bv" name = "final" value = "" checked>
+                <label for = "bv"></label><br><br>
             <div style = "text-align: center">
                 <b>
                     <button id = "submit" type = "submit">
@@ -246,8 +280,14 @@
                     </button>
                 </b>
             </div>
-        </form>
+        </form><br><br>
+        <table>
+            {% for table in tables %}
+            {{ table|safe }}
+            {% endfor %}
+        </table>
     </div>
+    <button id="btnExport" onclick="TableExport(this)">Download</button>
 </b>
 </body>
 <style>
@@ -261,7 +301,7 @@
             padding-right: 50px;
             padding-top: -50px;
             padding-bottom: 50px;
-            font-size: 18px;
+            font-size: 12px;
             font-family: "Noto Sans";
             color: black;
         }
@@ -271,10 +311,17 @@
         }
 
     label {
-            width: 180px;
+            width: 120px;
             display: inline-block;
         }
+
     #submit {
+                font-size: 18px;
+                color: black;
+                padding: 15px;
+        }
+
+    #download {
                 font-size: 18px;
                 color: black;
                 padding: 15px;
