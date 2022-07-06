@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CrickArena</title>
+    
+
+    <link rel = "stylesheet" href = "https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity = "sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin = "anonymous">
+    <script src = "https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity = "sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin = "anonymous"></script>
+    <script src = "https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity = "sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin = "anonymous"></script>
+    <script src = "https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity = "sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin = "anonymous"></script>
+
+
+  <script>
+          document.addEventListener("DOMContentLoaded", function(){
+          window.addEventListener('scroll', function() {
+          if (window.scrollY > 50) {
+                document.getElementById('navbar_top').classList.add('fixed-top');
+                navbar_height = document.querySelector('.navbar').offsetHeight;
+                document.body.style.paddingTop = navbar_height + 'px';
+          } 
+          else {
+                document.getElementById('navbar_top').classList.remove('fixed-top');
+                document.body.style.paddingTop = '0';
+          } 
+            });
+          }); 
+
+
+  </script>
+
+
+  <style>
+        .navbar .navbar-nav .nav-link {
+          color: #fff;
+          font-size: 1.1em;
+        }
+        .navbar .navbar-nav .nav-link:hover {
+          background-color: #0864db;
+          color: #fff;
+        }
+        .navbar .navbar-nav .nav-link {
+           padding: 0.6em;
+        }
+      .navbar .navbar-brand {
+          padding: 0 0.6em;
+      }
+      @media only screen and (min-width: 992px) {
+      .navbar {
+          padding: 0;
+      }
+      .navbar .navbar-nav .nav-link {
+        padding: 1em 0.7em;
+      }
+      .navbar .navbar-brand {
+        padding: 0 0.8em;
+      }
+    }
+
+    .carousel {
+      max-height: 500px;
+      overflow: hidden;
+    }
+
+    .carousel .item img {
+      width: 100%;
+      height: auto;
+    }
+
+
+  </style>
+
+
+
+</head>
+
+<body>  
+      <div class = "jumbotron text-center" style = "background-image: url(static/background.jpg); background-size: 100% 100%;">
+           <h1 style = "text-align: center; color: whitesmoke; font-family: 'Georgia';"><span>INDIAN PREMIER LEAGUE</span></h1>
+      </div>
+
+      <nav id = "navbar_top" class = "navbar navbar-expand-sm bg-dark navbar-dark">
+      
+        <!-- Toggler/collapsibe Button -->
+        <button class = "navbar-toggler" type = "button" data-toggle = "collapse" data-target = "#collapsibleNavbar">
+          <span class = "navbar-toggler-icon"></span>
+        </button>
+      
+        <!-- Navbar links -->
+        <div class = "collapse navbar-collapse" id = "collapsibleNavbar">
+          <ul class = "nav navbar-nav navbar-right">
+            <li class = "nav-item">
+              <a class = "nav-link" href = "/" target = "_blank">Home</a>
+            </li>
+            <li class = "nav-item">
+              <a class = "nav-link disabled" href = "/about" target = "_blank">About</a>
+            </li>
+            <li class = "nav-item">
+              <a class = "nav-link" href = "/analytics">Analytics</a>
+            </li>
+          </ul>
+          
+        </div>
+      </nav>
+
+      <br>
+      <div class = "container-fluid text-center"> 
+
+    <b>
+
+        <div class = "container  from-group">
+            <form class = "" action = "{{url_for('analytics')}}" method = "post">
+                <div class = "form-group">
+                    <div class = "form-group row  ">
+                        <label class = "form-label col-sm-4 border-bottom pt-2">
+                            <div>
+                                Year
+                            </div>
+                        </label>
+                        <input class = "form-control col-sm-4 mr-5" id = "aa" type = "float" name = "year">
+                        <div class = "form-check form-check-inline">
+                            <input class = "form-check-input" type = "radio" id = "ab" name = "operator_year" value = " = ">
+                            <label class = "form-check-label" for = "ab">In </label>
+                        </div>
+                        <div class = "form-check form-check-inline">
+                            <input class = "form-check-input" type = "radio" id = "ac" name = "operator_year" value = "<">
+                            <label class = "form-check-label" for = "ac">Before</label>
+                        </div>
+                        <div class = "form-check form-check-inline">
+                            <input class = "form-check-input" type = "radio" id = "ad" name = "operator_year" value = ">">
+                            <label class = "form-check-label" for = "ad">After</label>
+                        </div>
+                        <input style = "display: None; visibility: hidden; opacity: 0; clip-path: inset(100%);"
+                            type = "radio" id = "ae" name = "operator_year" value = "" checked>
+                        <label for = "ae"></label>
+                    </div>
+
+                    <div class = "form-group row ">
+                        <label class = "form-lable col-sm-4 border-bottom pt-2">
+                            <span>
+                                Venue
+                            </span>
+                        </label>
+                        <select class = "form-select form-control col-sm-4" aria-label = "select Venue" name = "venue"
+                            id = "af">
+                            <option value = ""></option>
+                            <option value = "Arun Jaitley Stadium">Arun Jaitley Stadium</option>
+                            <option value = "Barabati Stadium">Barabati Stadium</option>
+                            <option value = "Brabourne Stadium">Brabourne Stadium</option>
+                            <option value = "Buffalo Park">Buffalo Park</option>
+                            <option value = "De Beers Diamond Oval">De Beers Diamond Oval</option>
+                            <option value = "Dr DY Patil Sports Academy">Dr DY Patil Sports Academy</option>
+                            <option value = "Dr. Y.S. Rajasekhara Reddy ACA-VDCA Cricket Stadium">Dr. Y.S. Rajasekhara
+                                Reddy
+                                ACA-VDCA Cricket Stadium</option>
+                            <option value = "Dubai International Cricket Stadium">Dubai International Cricket Stadium
+                            </option>
+                            <option value = "Eden Gardens">Eden Gardens</option>
+                            <option value = "Green Park">Green Park</option>
+                            <option value = "Himachal Pradesh Cricket Association Stadium">Himachal Pradesh Cricket
+                                Association
+                                Stadium</option>
+                            <option value = "Holkar Cricket Stadium">Holkar Cricket Stadium</option>
+                            <option value = "JSCA International Stadium Complex">JSCA International Stadium Complex
+                            </option>
+                            <option value = "Kingsmead">Kingsmead</option>
+                            <option value = "M Chinnaswamy Stadium">M Chinnaswamy Stadium</option>
+                            <option value = "MA Chidambaram Stadium">MA Chidambaram Stadium</option>
+                            <option value = "Maharashtra Cricket Association Stadium">Maharashtra Cricket Association
+                                Stadium
+                            </option>
+                            <option value = "Narendra Modi Stadium, Ahmedabad">Narendra Modi Stadium, Ahmedabad</option>
+                            <option value = "Nehru Stadium">Nehru Stadium</option>
+                            <option value = "New Wanderers Stadium">New Wanderers Stadium</option>
+                            <option value = "Newlands">Newlands</option>
+                            <option value = "OUTsurance Oval">OUTsurance Oval</option>
+                            <option value = "Punjab Cricket Association IS Bindra Stadium">Punjab Cricket Association IS
+                                Bindra
+                                Stadium</option>
+                            <option value = "Rajiv Gandhi International Stadium">Rajiv Gandhi International Stadium
+                            </option>
+                            <option value = "Saurashtra Cricket Association Stadium">Saurashtra Cricket Association
+                                Stadium
+                            </option>
+                            <option value = "Sawai Mansingh Stadium">Sawai Mansingh Stadium</option>
+                            <option value = "Shaheed Veer Narayan Singh International Stadium">Shaheed Veer Narayan Singh
+                                International Stadium</option>
+                            <option value = "Sharjah Cricket Stadium">Sharjah Cricket Stadium</option>
+                            <option value = "Sheikh Zayed Stadium">Sheikh Zayed Stadium</option>
+                            <option value = "St George's Park">St George's Park</option>
+                            <option value = "Subrata Roy Sahara Stadium">Subrata Roy Sahara Stadium</option>
+                            <option value = "SuperSport Park">SuperSport Park</option>
+                            <option value = "Vidarbha Cricket Association Stadium, Jamtha">Vidarbha Cricket Association
+                                Stadium,
+                                Jamtha</option>
+                            <option value = "Wankhede Stadium">Wankhede Stadium</option>
+                        </select>
+                    </div>
+                    <div class = "form-group row">
+                        <label class = "form-lable col-sm-4 border-bottom pt-2">
+                            <span>
+                                First Batting Team
+                            </span>
+                        </label>
+                        <select class = "form-select form-control col-sm-4" name = "innings_1_bat_team" id = "ag">
+                            <option value = ""></option>
+                            <option value = "Chennai Super Kings">Chennai Super Kings</option>
+                            <option value = "Deccan Chargers">Deccan Chargers</option>
+                            <option value = "Delhi Capitals">Delhi Capitals</option>
+                            <option value = "Gujarat Lions">Gujarat Lions</option>
+                            <option value = "Kochi Tuskers Kerala">Kochi Tuskers Kerala</option>
+                            <option value = "Kolkata Knight Riders">Kolkata Knight Riders</option>
+                            <option value = "Mumbai Indians">Mumbai Indians</option>
+                            <option value = "Pune Warriors">Pune Warriors</option>
+                            <option value = "Punjab Kings">Punjab Kings</option>
+                            <option value = "Rajasthan Royals">Rajasthan Royals</option>
+                            <option value = "Rising Pune Supergiant">Rising Pune Supergiant</option>
+                            <option value = "Royal Challengers Bangalore">Royal Challengers Bangalore</option>
+                            <option value = "Sunrisers Hyderabad">Sunrisers Hyderabad</option>
+                        </select>
+                    </div>
+                    <div class = " form-group row">
+                        <label class = "form-lable col-sm-4 border-bottom pt-2">
+                            <span>
+                                Second Batting Team
+                            </span>
+                        </label>
+                        <select class = "form-select form-control col-sm-4" name = "innings_2_bat_team" id = "ah">
+                            <option value = ""></option>
+                            <option value = "Chennai Super Kings">Chennai Super Kings</option>
+                            <option value = "Deccan Chargers">Deccan Chargers</option>
+                            <option value = "Delhi Capitals">Delhi Capitals</option>
+                            <option value = "Gujarat Lions">Gujarat Lions</option>
+                            <option value = "Kochi Tuskers Kerala">Kochi Tuskers Kerala</option>
+                            <option value = "Kolkata Knight Riders">Kolkata Knight Riders</option>
+                            <option value = "Mumbai Indians">Mumbai Indians</option>
+                            <option value = "Pune Warriors">Pune Warriors</option>
+                            <option value = "Punjab Kings">Punjab Kings</option>
+                            <option value = "Rajasthan Royals">Rajasthan Royals</option>
+                            <option value = "Rising Pune Supergiant">Rising Pune Supergiant</option>
+                            <option value = "Royal Challengers Bangalore">Royal Challengers Bangalore</option>
+                            <option value = "Sunrisers Hyderabad">Sunrisers Hyderabad</option>
+                        </select>
+                    </div>
+                    <div class = "form-group row"> <label class = "form-lable col-sm-4 border-bottom pt-2">
+                            <span>
+                                Toss Winner
+                            </span>
+                        </label>
+                        <select class = "form-select form-control col-sm-4 mr-5" name = "toss_winner" id = "ai">
+                            <option value = ""></option>
+                            <option value = "Chennai Super Kings">Chennai Super Kings</option>
+                            <option value = "Deccan Chargers">Deccan Chargers</option>
+                            <option value = "Delhi Capitals">Delhi Capitals</option>
+                            <option value = "Gujarat Lions">Gujarat Lions</option>
+                            <option value = "Kochi Tuskers Kerala">Kochi Tuskers Kerala</option>
+                            <option value = "Kolkata Knight Riders">Kolkata Knight Riders</option>
+                            <option value = "Mumbai Indians">Mumbai Indians</option>
+                            <option value = "Pune Warriors">Pune Warriors</option>
+                            <option value = "Punjab Kings">Punjab Kings</option>
+                            <option value = "Rajasthan Royals">Rajasthan Royals</option>
+                            <option value = "Rising Pune Supergiant">Rising Pune Supergiant</option>
+                            <option value = "Royal Challengers Bangalore">Royal Challengers Bangalore</option>
+                            <option value = "Sunrisers Hyderabad">Sunrisers Hyderabad</option>
+                        </select>
+                        <div class = "form-check form-check-inline">
+                            <input class = "form-check-input" type = "radio" id = "aj" name = "toss_decision" value = "bat">
+                            <label class = "form-check-label" for = "aj">Bat</label>
+                        </div>
+                        <div class = "form-check form-check-inline">
+                            <input class = "form-check-input" type = "radio" id = "ak" name = "toss_decision" value = "field">
+                            <label class = "form-check-label" for = "ak">Field</label>
+                        </div>
+                        <input style = "display: None; visibility: hidden; opacity: 0; clip-path: inset(100%);"
+                            type = "radio" id = "al" name = "toss_decision" value = "" checked>
+                        <label for = "al"></label>
+                    </div>
+                    <div class = "form-group row">
+                        <label class = "form-lable col-sm-4 border-bottom pt-2">
+                            <span>
+                                Winner
+                            </span>
+                        </label>
+                        <select class = "form-select form-control col-sm-4 mr-5" name = "winner" id = "am">
+                            <option value = ""></option>
+                            <option value = "Chennai Super Kings">Chennai Super Kings</option>
+                            <option value = "Deccan Chargers">Deccan Chargers</option>
+                            <option value = "Delhi Capitals">Delhi Capitals</option>
+                            <option value = "Gujarat Lions">Gujarat Lions</option>
+                            <option value = "Kochi Tuskers Kerala">Kochi Tuskers Kerala</option>
+                            <option value = "Kolkata Knight Riders">Kolkata Knight Riders</option>
+                            <option value = "Mumbai Indians">Mumbai Indians</option>
+                            <option value = "Pune Warriors">Pune Warriors</option>
+                            <option value = "Punjab Kings">Punjab Kings</option>
+                            <option value = "Rajasthan Royals">Rajasthan Royals</option>
+                            <option value = "Rising Pune Supergiant">Rising Pune Supergiant</option>
+                            <option value = "Royal Challengers Bangalore">Royal Challengers Bangalore</option>
+                            <option value = "Sunrisers Hyderabad">Sunrisers Hyderabad</option>
+                        </select>
+                        <div class = "form-check form-check-inline">
+                    <input class = "form-check-input" type = "radio" id = "an" name = "result" value = "runs">
+                    <label class = "form-check-label" for = "an">Runs</label></div>
+                    <div class = "form-check form-check-inline">
+                    <input class = "form-check-input" type = "radio" id = "ao" name = "result" value = "wickets">
+                    <label class = "form-check-label" for = "ao">Wickets</label></div>
+                    <input style = "display: None; visibility: hidden; opacity: 0; clip-path: inset(100%);" type = "radio"
+                        id = "ap" name = "result" value = "" checked>
+                    <label for = "ap"></label></div>
+
+                    <div class = "form-group row">
+                        <label class = "form-lable col-sm-4 border-bottom pt-2">
+                            <span>
+                                Margin
+                            </span>
+                        </label><input class = "form-control col-sm-4 mr-5" id = "aq" type = "float" name = "result_margin">
+                        <div class = "form-check form-check-inline">
+                            <input class = "form-check-input" type = "radio" id = "ar" name = "operator_result_margin"
+                                value = " = ">
+                            <label class = "form-check-label" for = "ar">Equals to</label>
+                        </div>
+                        <div class = "form-check form-check-inline">
+                            <input class = "form-check-input" type = "radio" id = "as" name = "operator_result_margin"
+                                value = "<">
+                            <label class = "form-check-label" for = "as">Less than</label>
+                        </div>
+                        <div class = "form-check form-check-inline">
+                            <input class = "form-check-input" type = "radio" id = "at" name = "operator_result_margin"
+                                value = ">">
+                            <label class = "form-check-label" for = "at">More than</label>
+                        </div>
+
+                        <input style = "display: None; visibility: hidden; opacity: 0; clip-path: inset(100%);"
+                            type = "radio" id = "au" name = "operator_result_margin" value = "" checked>
+                        <label for = "au"></label>
+                    </div>
+                    <div class = "form-group row">
+                        <label class = "form-lable col-sm-4 border-bottom pt-2">
+                            <span>
+                                D/L Method
+                            </span>
+
+                        </label>
+                        <select class = "form-select form-control col-sm-2" name = "method" id = "av">
+                            <option value = ""></option>
+                            <option value = "D/L">Yes</option>
+                        </select>
+                    </div>
+                    <div class = "form-group row">
+                        <label class = "form-lable col-sm-4 border-bottom pt-2">
+                            <span>
+                                1st Innings Score
+                            </span>
+                        </label>
+                        <input class = "form-control col-sm-4 mr-5" id = "aw" type = "float" name = "innings_1_score">
+                        <div class = "form-check form-check-inline">
+                            <input class = "form-check-input" type = "radio" id = "ax" name = "operator_innings_1_score"
+                                value = " = ">
+                            <label class = "form-check-label" for = "ax">Equals to</label>
+                        </div>
+                        <div class = "form-check form-check-inline">
+                            <input class = "form-check-input" type = "radio" id = "ay" name = "operator_innings_1_score"
+                                value = "<">
+                            <label class = "form-check-label" for = "ay">Less than</label>
+                        </div>
+                        <div class = "form-check form-check-inline">
+                            <input class = "form-check-input" type = "radio" id = "az" name = "operator_innings_1_score"
+                                value = ">">
+                            <label class = "form-check-label" for = "az">More than</label>
+                        </div>
+
+                        <input style = "display: None; visibility: hidden; opacity: 0; clip-path: inset(100%);"
+                            type = "radio" id = "ba" name = "operator_innings_1_score" value = "" checked>
+                        <label for = "ba"></label>
+                    </div>
+                    <div class = "form-group row">
+                        <label class = "form-lable col-sm-4 border-bottom pt-2">
+                            <span>
+                                1st Innings Wickets
+                            </span>
+                        </label>
+                        <input class = "form-control col-sm-4 mr-5" id = "bb" type = "float" name = "innings_1_wickets">
+                        <div class = "form-check form-check-inline">
+                            <input class = "form-check-input" type = "radio" id = "bc" name = "operator_innings_1_wickets"
+                                value = " = ">
+                            <label class = "form-check-label" for = "bc">Equals to</label>
+                        </div>
+                        <div class = "form-check form-check-inline">
+                            <input class = "form-check-input" type = "radio" id = "bd" name = "operator_innings_1_wickets"
+                                value = "<">
+                            <label class = "form-check-label" for = "bd">Less than</label>
+                        </div>
+                        <div class = "form-check form-check-inline">
+                            <input class = "form-check-input" type = "radio" id = "be" name = "operator_innings_1_wickets"
+                                value = ">">
+                            <label class = "form-check-label" for = "be">More than</label>
+                        </div>
+
+                        <input style = "display: None; visibility: hidden; opacity: 0; clip-path: inset(100%);"
+                            type = "radio" id = "bf" name = "operator_innings_1_wickets" value = "" checked>
+                        <label for = "bf"></label>
+                    </div>
+                    <div class = "form-group row">
+                        <label class = "form-lable col-sm-4 border-bottom pt-2">
+                            <span>
+                                2nd Innings Score
+                            </span>
+                        </label>
+                        <input class = "form-control col-sm-4 mr-5" id = "bg" type = "float" name = "innings_2_score">
+                        <div class = "form-check form-check-inline">
+                            <input class = "form-check-input" type = "radio" id = "bh" name = "operator_innings_2_score"
+                                value = " = ">
+                            <label class = "form-check-label" for = "bh">Equals to</label>
+                        </div>
+                        <div class = "form-check form-check-inline">
+                            <input class = "form-check-input" type = "radio" id = "bi" name = "operator_innings_2_score"
+                                value = "<">
+                            <label class = "form-check-label" for = "bi">Less than</label>
+                        </div>
+                        <div class = "form-check form-check-inline">
+                            <input class = "form-check-input" type = "radio" id = "bj" name = "operator_innings_2_score"
+                                value = ">">
+                            <label class = "form-check-label" for = "bj">More than</label>
+                        </div>
+
+                        <input style = "display: None; visibility: hidden; opacity: 0; clip-path: inset(100%);"
+                            type = "radio" id = "bk" name = "operator_innings_2_score" value = "" checked>
+                        <label for = "bk"></label>
+                    </div>
+                    <div class = "form-group row">
+                        <label class = "form-lable col-sm-4 border-bottom pt-2">
+                            <span>
+                                2nd Innings Wickets
+                            </span>
+                        </label>
+                        <input class = "form-control col-sm-4 mr-5" id = "bl" type = "float" name = "innings_2_wickets">
+                        <div class = "form-check form-check-inline">
+                            <input class = "form-check-input" type = "radio" id = "bm" name = "operator_innings_2_wickets"
+                                value = " = ">
+                            <label class = "form-check-label" for = "bm">Equals to</label>
+                        </div>
+                        <div class = "form-check form-check-inline">
+                            <input class = "form-check-input" type = "radio" id = "bn" name = "operator_innings_2_wickets"
+                                value = "<">
+                            <label class = "form-check-label" for = "bn">Less than</label>
+                        </div>
+                        <div class = "form-check form-check-inline">
+                            <input class = "form-check-input" type = "radio" id = "bo" name = "operator_innings_2_wickets"
+                                value = ">">
+                            <label class = "form-check-label" for = "bo">More than</label>
+                        </div>
+                        <div class = "form-check form-check-inline">
+                            <input style = "display: None; visibility: hidden; opacity: 0; clip-path: inset(100%);"
+                                type = "radio" id = "bp" name = "operator_innings_2_wickets" value = "" checked>
+                            <label for = "bp"></label>
+                        </div>
+                    </div>
+                    <br>
+
+                    <div class = "form-group row center">
+                        <div class = "form-check form-check-inline">
+                            <input class = "form-check-input" type = "radio" id = "bq" name = "playoff" value = "1">
+                            <label class = "form-check-label" for = "bq">Playoffs</label>
+                        </div>
+                        <div class = "form-check form-check-inline">
+                            <input style = "display: None; visibility: hidden; opacity: 0; clip-path: inset(100%);"
+                                type = "radio" id = "br" name = "playoff" value = "" checked>
+                            <label class = "form-check-label" for = "br"></label>
+                        </div>
+                        <div class = "form-check form-check-inline">
+                            <input class = "form-check-input" type = "radio" id = "bs" name = "knockout" value = "1">
+                            <label class = "form-check-label" for = "bs">Knockout</label>
+                        </div>
+
+                        <input style = "display: None; visibility: hidden; opacity: 0; clip-path: inset(100%);"
+                            type = "radio" id = "bt" name = "knockout" value = "" checked>
+                        <label for = "bt"></label>
+                        <div class = "form-check form-check-inline">
+                            <input class = "form-check-input" type = "radio" id = "bu" name = "final" value = "1">
+                            <label class = "form-check-label" for = "bu">Final</label>
+                        </div>
+
+                        <input style = "display: None; visibility: hidden; opacity: 0; clip-path: inset(100%);"
+                            type = "radio" id = "bv" name = "final" value = "" checked>
+                        <label for = "bv"></label><br><br>
+                    </div>
+                    <br>
+                    <div style = "text-align: center">
+                        <b>
+                            <button class = "btn btn-primary" id = "submit" type = "submit">
+                                Submit Query
+                            </button>
+                        </b>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <br><br>
+        <table class = "table table-striped">
+            {% for table in tables %}
+            {{ table|safe }}
+            {% endfor %}
+        </table>
+</body>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        window.addEventListener('scroll', function () {
+            if (window.scrollY > 50) {
+                document.getElementById('navbar_top').classList.add('fixed-top');
+                navbar_height = document.querySelector('.navbar').offsetHeight;
+                document.body.style.paddingTop = navbar_height + 'px';
+            }
+            else {
+                document.getElementById('navbar_top').classList.remove('fixed-top');
+                document.body.style.paddingTop = '0';
+            }
+        });
+    });
+
+
+</script>
+<style>
+    @import url("https://fonts.googleapis.com/css2?family = Noto+Sans&display = swap");
+
+    body {
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-attachment: fixed;
+        text-align: left;
+        padding-left: 50px;
+        padding-right: 50px;
+        padding-top: -50px;
+        padding-bottom: 50px;
+        font-size: 15px;
+        font-family: "Noto Sans";
+        color: black;
+    }
+
+    a {
+        text-decoration: None;
+    }
+
+    .center{
+        justify-content: center;
+        gap : 1rem;
+    }
+
+    /* 
+    label {
+        width: 120px;
+        display: inline-block;
+    }
+*/
+/*
+    #submit {
+        font-size: 15px;
+        color: black;
+        padding: 12px;
+    } */
+
+    #download {
+        font-size: 18px;
+        color: black;
+        padding: 15px;
+    }
+
+    .navbar .navbar-nav .nav-link {
+          color: #fff;
+          font-size: 1.1em;
+        }
+        .navbar .navbar-nav .nav-link:hover {
+          background-color: #0864db;
+          color: #fff;
+        }
+        .navbar .navbar-nav .nav-link {
+           padding: 0.6em;
+        }
+      .navbar .navbar-brand {
+          padding: 0 0.6em;
+      }
+      
+      @media only screen and (min-width: 992px) {
+      .navbar {
+          padding: 0;
+      }
+      .navbar .navbar-nav .nav-link {
+        padding: 1em 0.7em;
+      }
+      .navbar .navbar-brand {
+        padding: 0 0.8em;
+      }
+    }
+</style>
+
+</html>
